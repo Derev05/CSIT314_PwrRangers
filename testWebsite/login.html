@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script>
+	$('document').ready(function(){
+		$('#navbar').load("navbar.html");
+	});
+	
+	function showPW(){
+	var pw = document.getElementById("pw");
+	if(pw.type === "password") {
+		pw.type = "text";
+		} else {
+		pw.type = "password";
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="navbar"></div>
+	<div class="login" action="LoginAuthCtr.php" method="post">
+		<form>
+		<div class="member">
+			Member Login
+		</div>
+		<br>
+		Username
+		<br>
+        <input type="text" name="username" placeholder="Username" required>
+		<br>
+		Password
+		<br>
+        <input type="password" name="password" placeholder="Password" id="pw" required>
+		<br>
+		<input type="checkbox" onclick="showPW()">Show Password
+		<br>
+		<label>
+			<input type="checkbox" checked="checked" name="remember"> Remember me
+		</label>
+		<span class="psw"><a href="#">Forgot password?</a></span>
+		<br>
+        <button class="button" type="submit">Login</button>
+		</form>
+	</div>
+</body>
+
+</html>
