@@ -1,0 +1,121 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    // If the user is already logged in, redirect them to the navbar (or main page)
+    header("Location: navbar.html");
+    exit();
+}
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+	<script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+	<title>Login</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.navbar {
+			margin-bottom: 0;
+		}
+
+		.login-container {
+			flex-grow: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #f8f9fa;
+		}
+
+		.login {
+			width: 300px;
+			padding: 20px;
+			background: #fff;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Navbar Section -->
+	<nav class="py-2 bg-primary-subtle border-bottom navbar">
+		<div class="container d-flex flex-wrap">
+			<ul class="nav me-auto">
+				<li class="nav-item"><a href="login.html" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+			</ul>
+			<ul class="nav">
+				<li class="nav-item"><a href="login.html" class="nav-link text-primary link-dark px-2">Login</a></li>
+				<li class="nav-item"><a href="signUp.html" class="nav-link link-dark px-2">Sign up</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Login Form -->
+	<div class="login-container">
+		<div class="card login">
+			<form id="loginForm" action="LoginAuthCtr.php" method="post">
+				<div class="card-header text-center fw-bold fs-3">
+					Member Login
+				</div>
+				<div class="mb-3">
+					<input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+				</div>
+				<div class="mb-3">
+					<input type="password" class="form-control" id="pw" placeholder="Password" name="password" required>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="" id="pwCheckbox" onclick="showPW()">
+					<label class="form-check-label" for="pwCheckbox">
+						Show Password
+					</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="" name="remember" id="rmbrCheckbox" checked="checked">
+					<label class="form-check-label" for="rmbrCheckbox">
+						Remember Me
+					</label>
+				</div>
+				<div class="mb-3">
+					<span class="psw"><a href="#">Forgot password?</a></span>
+				</div>
+				<div class="d-grid mb-3">
+					<button class="btn btn-primary" type="submit">Login</button>
+				</div>
+			</form>
+			<script>
+				document.getElementById('loginForm').addEventListener('submit', function (event) {
+					event.preventDefault(); // Prevent default form submission
+
+					var formData = new FormData(this);
+
+					fetch('LoginAuthCtr.php', {
+						method: 'POST',
+						body: formData
+					})
+						.then(response => response.text())
+						.then(data => {
+							if (data.trim() === 'success') {
+								window.location.href = 'navbar.html';
+							} else {
+								alert(data); // Show error message from LoginAuthCtr.php
+							}
+						})
+						.catch(error => console.error('Error:', error));
+				});
+			</script>
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+html * {margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.logoheader
+{
+	position: fixed; 
+	top: 0;
+	width: 100%;
+	background: rgba(28, 35, 249, 0.8);
+	display:flex;
+	justify-content: space-between;
+	z-index: 10;
+	padding-right: 50px;
+}
+
+.logo 
+{
+	position:relative;
+	left:40px;
+}
+
+
+.navbar a
+{
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	margin-right: 20px;
+	font-weight: 500;
+	position: relative;
+	top: 20px;	
+}
+
+.navbar a:hover{color: yellow;}
+
+.login
+{
+	background-color: lightgray;
+	width: 25%; 
+	justify-content: center; 
+	margin-left: 10%; 
+	margin-right: 60%; 
+	border-width: 2px; 
+	border-style: solid; 
+	border-color: black; 
+	border-radius: 15px; 
+	margin-top: 10%; 
+	padding-left: 10px;
+}
+
+.member
+{
+	justify-content: center;
+	position: relative;
+	margin-left: 30%;
+	font-weight: bold;
+	font-size: x-large;
+}
+
+.psw
+{
+	position:relative;
+	margin-left: 45%;
+}
+
+.button
+{
+	background-color: green;
+	position:relative;
+	color: white;
+	width: 80%;
+	margin-left: 10%;
+}
+
+input[type=text],[type=password]
+{
+	width: 95%;
+}
