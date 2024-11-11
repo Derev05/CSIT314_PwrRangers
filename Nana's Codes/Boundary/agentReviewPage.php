@@ -27,13 +27,15 @@ $overallRating = 4.7;
     margin-top: 0; /* Ensures container starts directly below the navbar */
     padding-top: 10px; /* Adjust as needed */
 }
-    .agent-info-box {
-      border: 1px solid #ddd;
-      padding: 20px;
-      margin-bottom: 20px;
-      background-color: #f8f9fa;
-      border-radius: 8px;
-    }
+.agent-info-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
     .overall-rating {
       display: flex;
       align-items: center;
@@ -65,6 +67,22 @@ $overallRating = 4.7;
       color: #333;
     }
 
+    .profile-photo-large {
+    width: 100px; /* Larger size for better visibility */
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.reviewer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
   </style>
 </head>
 <body>
@@ -73,14 +91,21 @@ $overallRating = 4.7;
 
 
 
-<div class="container">
-  <!-- Agent Information -->
-  <div class="agent-info-box">
-    <h3>Agent Info</h3>
-    <p><strong>Name:</strong> <?php echo htmlspecialchars($agentName); ?></p>
-    <p><strong>Contact:</strong> <?php echo htmlspecialchars($agentContact); ?></p>
-    <p><strong>Email:</strong> <?php echo htmlspecialchars($agentEmail); ?></p>
+  <div class="container">
+  <h1>Agent Info</h1>
+    <!-- Agent Information -->
+    <div class="agent-info-box d-flex">
+    <!-- Agent Profile Picture -->
+    <img src="../assets/images/9203764.png" alt="Agent Photo" class="profile-photo-large"> 
+    <!-- Agent Details -->
+    <div class="agent-details">
+      
+      <p><strong>Name:</strong> <?php echo htmlspecialchars($agentName); ?></p>
+      <p><strong>Contact:</strong> <?php echo htmlspecialchars($agentContact); ?></p>
+      <p><strong>Email:</strong> <?php echo htmlspecialchars($agentEmail); ?></p>
+    </div>
   </div>
+
 
   <!-- Overall Rating -->
   <div class="overall-rating">

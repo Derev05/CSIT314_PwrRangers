@@ -32,6 +32,7 @@ class AgentReviewBoundary {
         `;
     }
 
+    
     static displayReviews(reviews) {
         const reviewsContainer = document.getElementById('reviewsContainer');
         reviewsContainer.innerHTML = '';
@@ -39,6 +40,15 @@ class AgentReviewBoundary {
         reviews.forEach(review => {
             const reviewCard = document.createElement('div');
             reviewCard.classList.add('review-card');
+
+            // Create and add reviewer photo
+            const reviewerPhoto = document.createElement('img');
+            reviewerPhoto.src = '../assets/images/cuteStar.png'; // Use default if photo is unavailable
+            reviewerPhoto.alt = `${review.reviewName} Photo`;
+            reviewerPhoto.classList.add('reviewer-photo');
+            reviewCard.appendChild(reviewerPhoto);
+
+            console.log("Reviewer photo URL:", reviewerPhoto.src);
 
             const username = document.createElement('strong');
             username.textContent = review.reviewName;
